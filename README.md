@@ -97,6 +97,22 @@ Because it is a static site, any static host works.
 - Make the `og:image` and `twitter:image` URLs absolute (for example `https://yourdomain.com/og.jpg`) so social previews work reliably.
 - Add your domain to a `sitemap.xml` if you want one.
 
+## Cache busting
+
+Visitors always get fresh files without a hard reload:
+
+- **Versioned links:** every CSS, JS and image link carries `?v=<timestamp>`. A new version means a new URL, so browsers fetch the file again.
+- **Freshness check:** each page compares its `site-version` meta tag with `version.json` (fetched uncached). If a newer deploy exists, the page reloads once.
+- **Headers:** `_headers` (Netlify) and `vercel.json` make HTML and the version file always revalidate. GitHub Pages cannot set headers, so it relies on the first two.
+
+**Before every deploy**, run:
+
+```bash
+bash bump-version.sh
+```
+
+then commit and push. It updates all `?v=` links, the `site-version` meta tags and `version.json` in one go.
+
 ## Notes
 
 - Case studies are intentionally anonymized and client details are generalized.

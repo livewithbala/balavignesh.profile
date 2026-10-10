@@ -375,6 +375,18 @@ addEventListener("keydown",e=>{
   else if(e.key==="Enter"){e.preventDefault();run(sel)}
 });
 
+/* freshness check: if a newer deploy exists, reload once so visitors never see stale files */
+(()=>{
+  const m=$('meta[name="site-version"]');if(!m||location.protocol==="file:")return;
+  fetch("version.json?t="+Date.now(),{cache:"no-store"}).then(r=>r.ok?r.json():null).then(d=>{
+    if(!d||!d.v||d.v===m.content)return;
+    let tried=false;try{tried=sessionStorage.getItem("v-reloaded")===d.v}catch(e){}
+    if(tried)return;
+    try{sessionStorage.setItem("v-reloaded",d.v)}catch(e){}
+    location.reload();
+  }).catch(()=>{});
+})();
+
 /* mobile menu */
 const mb=$("#menuBtn");
 if(mb){
