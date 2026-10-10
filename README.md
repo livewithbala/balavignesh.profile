@@ -47,6 +47,7 @@ Plain HTML, CSS and vanilla JavaScript. No build step, no framework, no dependen
 ├── headshot.jpg                # Portrait
 ├── favicon.jpg                 # Favicon
 ├── apple-touch-icon.png        # Home-screen icon
+├── logos/                      # Employer logos shown in the career timeline
 ├── og.jpg                      # Social share image (1200x630)
 └── robots.txt
 ```
