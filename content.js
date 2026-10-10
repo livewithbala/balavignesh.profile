@@ -7,7 +7,7 @@
 window.SITE = {
   email: ["baluviki00", "gmail.com"].join("@"),
   linkedin: "https://www.linkedin.com/in/bala-vignesh-742b55106/",
-  resumeUrl: "Bala_Vignesh_Resume.pdf?v=202610101326",
+  resumeUrl: "Bala_Vignesh_Resume.pdf?v=202610101331",
   // Paste a Calendly / Cal.com / Google Calendar booking link here.
   // While empty, "Book a chat" opens a pre-filled email instead.
   bookingUrl: "",
