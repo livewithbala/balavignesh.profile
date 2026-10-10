@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Product Lab — Bala Vignesh S</title>
+<meta name="description" content="Try prioritization like a Senior Product Owner: RICE, Value vs Effort, MoSCoW and Kano, plus a one-page PRD.">
+<meta name="theme-color" content="#FAFAF7">
+<meta property="og:title" content="Product Lab — Bala Vignesh S">
+<meta property="og:description" content="Prioritize a real backlog with RICE, Value vs Effort, MoSCoW and Kano.">
+<meta property="og:type" content="website">
+<meta property="og:image" content="og.jpg">
+<meta name="twitter:image" content="og.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" type="image/jpeg" href="favicon.jpg">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<a class="skip" href="#top">Skip to content</a>
+<div id="progress"></div>
+
+<nav id="nav">
+  <div class="wrap nav-in">
+    <a href="index.html" class="logo" aria-label="Back to profile"><img class="avatar" src="favicon.jpg" alt="" width="28" height="28"><span>Bala Vignesh</span></a>
+    <div class="links" id="links">
+      <a href="index.html">← Profile</a>
+      <a href="#playground">Playground</a>
+      <a href="#stories">Stories</a>
+      <a href="#metrics">Metrics</a>
+      <a href="#prd">PRD</a>
+      <a href="#contact">Contact</a>
+    </div>
+    <div class="tools">
+      <button class="pill pal-pill" id="openPal" aria-label="Open command palette">
+        <span class="lbl">Jump to…</span><span class="kbd" id="kbdHint">⌘K</span>
+      </button>
+      <button class="icon-btn menu-btn" id="menuBtn" aria-label="Open menu" aria-expanded="false">☰</button>
+      <button class="icon-btn" id="theme" aria-label="Toggle dark mode">◐</button>
+    </div>
+  </div>
+</nav>
+
+<main id="top">
+<section class="hero" style="padding-bottom:0">
+  <div class="wrap">
+    <div class="status rv"><span class="dot"></span>Product Lab · experiments in how I think</div>
+    <h1 class="rv">Product thinking, <em>playable.</em></h1>
+    <p class="lede rv">The frameworks I use every sprint, made interactive. Prioritize a backlog, write a user story, build a metrics tree, read my PRD, and see how this site itself ships.</p>
+    <div class="cta rv"><a class="btn primary" href="#playground">Start prioritizing ↓</a><a class="btn ghost" href="index.html">← Back to profile</a></div>
+    <div class="tile-row rv"><a href="#playground">Prioritization</a><a href="#stories">Story writer</a><a href="#metrics">Metrics tree</a><a href="#prd">My PRD</a><a href="#changelog">Changelog</a></div>
+  </div>
+</section>
+
+<!-- PLAYGROUND -->
+<section id="playground">
+  <div class="wrap">
+    <div class="eyebrow rv">Interactive · Try my prioritization</div>
+    <h2 class="rv">Decide what ships <em>next.</em></h2>
+    <p class="lede rv">Same five backlog ideas, four lenses. Pick a framework, play with it, and see how the answer changes.</p>
+    <div class="fw-tabs rv" role="tablist" aria-label="Prioritization framework">
+      <button role="tab" aria-selected="true" data-fw="rice">RICE</button>
+      <button role="tab" aria-selected="false" data-fw="ve">Value vs Effort</button>
+      <button role="tab" aria-selected="false" data-fw="moscow">MoSCoW</button>
+      <button role="tab" aria-selected="false" data-fw="kano">Kano</button>
+    </div>
+    <div class="fw-brief rv" id="fwBrief" aria-live="polite"></div>
+    <div id="fwPanels">
+      <div class="panel play" data-p="rice" id="p-rice"></div>
+      <div class="panel" data-p="ve" id="p-ve" hidden></div>
+      <div class="panel play" data-p="moscow" id="p-moscow" hidden></div>
+      <div class="panel" data-p="kano" id="p-kano" hidden></div>
+    </div>
+  </div>
+</section>
+
+<!-- USER STORY WRITER -->
+<section id="stories">
+  <div class="wrap">
+    <div class="eyebrow rv">Interactive · Story writer</div>
+    <h2 class="rv">Write a story <em>engineers can build.</em></h2>
+    <p class="lede rv">Type a persona, a goal and a benefit. Get a user story, Gherkin acceptance criteria and the edge cases people usually forget.</p>
+    <div class="tool">
+      <div class="card rv" style="padding:24px">
+        <div class="field"><label for="stWho">Who (persona)</label><input id="stWho" value="compliance manager" autocomplete="off"></div>
+        <div class="field"><label for="stGoal">I want to</label><input id="stGoal" value="export the audit trail for any record" autocomplete="off"></div>
+        <div class="field"><label for="stWhy">So that</label><input id="stWhy" value="I can pass an inspection without manual reports" autocomplete="off"></div>
+        <div class="field"><label>Edge-case lenses</label>
+          <div class="lens" id="stLens">
+            <label><input type="checkbox" value="perm" checked> Permissions</label>
+            <label><input type="checkbox" value="empty"> Empty state</label>
+            <label><input type="checkbox" value="fail" checked> Failure</label>
+            <label><input type="checkbox" value="audit" checked> Audit</label>
+            <label><input type="checkbox" value="perf"> Performance</label>
+            <label><input type="checkbox" value="mobile"> Mobile</label>
+          </div></div>
+        <div class="invs" id="stInvest"></div>
+      </div>
+      <div class="rv">
+        <div class="out-head"><span class="kbd">Output</span><button class="pill" id="stCopy">Copy</button></div>
+        <pre class="out" id="stOut" aria-live="polite"></pre>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- METRICS TREE -->
+<section id="metrics">
+  <div class="wrap">
+    <div class="eyebrow rv">Interactive · Metrics tree</div>
+    <h2 class="rv">From North Star to <em>levers.</em></h2>
+    <p class="lede rv">Pick a product type to see how one outcome metric breaks down into inputs a team can move. Tap any node for what it means.</p>
+    <div class="field rv" style="max-width:280px;margin-top:28px"><label for="mtType">Product type</label><select id="mtType"></select></div>
+    <div class="mt rv"><div class="tree" id="mtTree"></div><div class="info" id="mtInfo" aria-live="polite"></div></div>
+  </div>
+</section>
+
+<!-- PRD -->
+<section id="prd">
+  <div class="wrap">
+    <div class="eyebrow rv">One-page PRD</div>
+    <h2 class="rv">Me, <em>specified.</em></h2>
+    <p class="lede rv">If I were a product, this is the spec.</p>
+    <div class="prd rv" style="margin-top:36px" aria-label="About me as a PRD">
+      <div class="prd-head"><span>PRD · Bala Vignesh S · v8.5</span><span><span class="tag">Status: Shipping</span></span></div>
+      <div class="prd-body">
+        <div><h4>Problem I solve</h4><p>Complex business and regulatory needs get lost between stakeholders and engineering, so products ship late or go unused.</p></div>
+        <div><h4>Target teams</h4><p>SaaS, PropTech, fintech and HealthTech teams that need a product owner who can own roadmap, delivery and stakeholders end to end.</p></div>
+        <div><h4>Approach</h4><p>Research → PRD → prioritize (RICE, MoSCoW) → Scrum delivery → UAT and release sign-off → measure.</p></div>
+        <div><h4>Success looks like</h4><p>High adoption, predictable releases, low tech debt and stakeholders who trust the roadmap.</p></div>
+        <div><h4>Non-goals</h4><p>Feature factories, roadmaps without a user problem, and compliance as an afterthought.</p></div>
+        <div><h4>Unfair advantage</h4><p>A CS engineering and growth background (₹50L→₹1.5Cr/month online revenue) plus ISTQB-certified testing fundamentals, so I speak tech, quality, users and revenue.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CHANGELOG -->
+<section id="changelog">
+  <div class="wrap">
+    <div class="eyebrow rv">Changelog</div>
+    <h2 class="rv">Shipped <em>iteratively.</em></h2>
+    <div class="log open rv" style="margin-top:32px">
+      <div><b>v2026.10.3</b> — Added deep dives, working-with-me, resume, share card, story writer and metrics tree.</div>
+      <div><b>v2026.10.2</b> — Split into Profile and Product Lab.</div>
+      <div><b>v2026.10.1</b> — Added Value vs Effort, MoSCoW and Kano to the playground.</div>
+      <div><b>v2026.10</b> — Shipped: portfolio, command palette (⌘K), RICE playground, dark mode.</div>
+      <div><b>v2025.07</b> — Joined Expleo as Senior Product Owner.</div>
+      <div><b>v2020.12</b> — Joined Crayon'd. Shipped 7 products.</div>
+      <div><b>Known issues</b> — None. Feedback welcome.</div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact" style="padding-top:0">
+  <div class="wrap">
+    <div class="contact rv">
+      <h2>Let's build something <em>people use.</em></h2>
+      <p>Like how I think? Hiring, collaborating or just comparing product notes? I'd love to connect.</p>
+      <div class="cta" data-cta="contact"></div>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="foot">
+      <span>© 2026 Bala Vignesh S · Chennai, India</span>
+      <span><a href="index.html" style="text-decoration:underline">← Back to profile</a></span>
+    </div>
+  </div>
+</footer>
+
+<div id="pal" role="dialog" aria-modal="true" aria-label="Command palette">
+  <div class="pal-box">
+    <input id="palIn" placeholder="Type a command or search…" autocomplete="off" aria-label="Search commands">
+    <div class="pal-list" id="palList"></div>
+    <div class="pal-foot"><span>↑↓ navigate</span><span>↵ select</span><span>esc close</span></div>
+  </div>
+</div>
+<div id="toast" role="status"></div>
+
+<script src="content.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
